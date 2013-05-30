@@ -25,7 +25,7 @@ public class LuceneSearch {
 
 	public static void main(String[] args) throws IOException, ParseException {
 		// 保存索引文件的地方 
-		String indexDir = "D:\\indexDir";
+		String indexDir = "C:\\indexDir";
 		Directory dir = new SimpleFSDirectory(new File(indexDir));
 		// 创建 IndexSearcher对象，相比IndexWriter对象，这个参数就要提供一个索引的目录就行了
 		IndexSearcher indexSearch = new IndexSearcher(dir);
@@ -33,7 +33,7 @@ public class LuceneSearch {
 		QueryParser queryParser = new QueryParser(Version.LUCENE_30, "contents",
 				new StandardAnalyzer(Version.LUCENE_30));
 		// 生成Query对象
-		Query query = queryParser.parse("always");
+		Query query = queryParser.parse("test");
 		// 搜索结果 TopDocs里面有scoreDocs[]数组，里面保存着索引值
 		TopDocs hits = indexSearch.search(query, 10);
 		// hits.totalHits表示一共搜到多少个

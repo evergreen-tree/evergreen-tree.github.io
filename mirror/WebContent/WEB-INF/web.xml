@@ -6,7 +6,7 @@
 	<display-name>mirror</display-name>
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>com.dispacher.DispatcherServlet?</servlet-class>
+		<servlet-class>com.dispacher.DispatcherServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
@@ -16,4 +16,25 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	<listener>
+		<listener-class>com.dear.ContextParameterListner</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>InitServlet</servlet-name>
+		<servlet-class>com.dear.InitServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitServlet</servlet-name>
+		<url-pattern>/InitServlet</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<display-name>CharacterFilter</display-name>
+		<filter-name>CharacterFilter</filter-name>
+		<filter-class>com.dear.filter.CharacterFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/frame.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/process/read.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/process/search.jsp=UTF-8
 encoding/<project>=UTF-8
