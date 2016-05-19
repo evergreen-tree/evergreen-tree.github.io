@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-I am freelance developer. Currently doing more in backend, actually in Python and Django.
+一只Java架构师，致力于提升祖国花朵的开发技能.
 
-email: agus[at]python.web.id
+email: wenbindong1984[at]163.com
