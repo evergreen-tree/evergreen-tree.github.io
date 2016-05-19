@@ -7,7 +7,7 @@ layout: default
     <hr />
     <ol class="posts">
     {% for post in paginator.posts %}
-      <li><a href="{{ post.url }}"><h2>{{ post.title }}</h2></a> &raquo; <i><span>{{ post.date | date_to_string }}
+      <li><a href="{{ post.url }}"><h3>{{ post.title }}</h3></a> &raquo; <i><span>{{ post.date | date_to_string }}
 		  <br>
 		  {% if post.content contains "<!-- more -->" %}
 			{{ post.content | split:"<!-- more -->" | first % }}
