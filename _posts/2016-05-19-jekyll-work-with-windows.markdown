@@ -56,9 +56,21 @@ $gem install jekyll
 
 网上有人说执行到这一步会出现网络异常，我没有遇到，可能是因为开了vpn的原因，如果存在问题的可以考虑用taobao的gem镜像进行安装，使用下面的命令进行gem镜像切换：
 {% highlight shell %}
-$ gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
+$ gem sources --add https://ruby.taobao.org/ 
+$ gem sources --remove https://rubygems.org/
 $ gem sources -l
 {% endhighlight %}
+
+> 到家的时候增加的内容：
+这一步遇到了一个问题：
+`SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://rubygems-china.oss-cn-hangzhou.aliyuncs.com/specs.4.8.gz)`
+后来google到下面的解决方案：
+
+(https://github.com/ruby-china/rubygems-mirror/wiki)
+
+
+
+
 
 安装完jekyll之后，在CMD运行一下jekyll -version来确保已经安装完成。
 我安装的版本是`jekyll 3.1.4`
