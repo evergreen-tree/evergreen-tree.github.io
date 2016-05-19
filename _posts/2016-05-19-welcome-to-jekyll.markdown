@@ -15,8 +15,8 @@ categories: jekyll
 # 安装步骤
 
 > 具体的安装和使用步骤如下：
-* 1. 安装ruby
-* 2. 安装Jekyll
+>+ 1. 安装ruby
+>+ 2. 安装Jekyll
 * 3. 申请并且初始化Git Page
 * 4. 安装Git Client
 * 5. 配置SSH免登陆提交key
