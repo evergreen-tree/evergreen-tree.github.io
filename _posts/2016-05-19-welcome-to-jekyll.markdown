@@ -7,7 +7,9 @@ categories: jekyll
 
 # 参照文档
 http://www.tuicool.com/articles/ruMVjyN
+
 http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html
+
 http://blog.javachen.com/2013/08/31/my-jekyll-config.html
 
 # 安装步骤
