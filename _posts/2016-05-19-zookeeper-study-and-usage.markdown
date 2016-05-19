@@ -5,97 +5,120 @@ date:   2016-05-19 17:17:01 +0800
 categories: zookeeper research
 ---
 
-> zookeeper是hadoop中用来控制同步数据的一个重要组件。ZooKeeper代码版本中，提供了分布式独享锁、选举、队列的接口，代码在zookeeper-3.4.3\src\recipes。其中分布锁和队列有Java和C两个版本，选举只有Java版本。
+> 前段时间遇到不少分布式的锁，分布式的数据处理的问题，针对问题使用数据库跟一系列的编程方法也得到了解决，所以抓紧时间研究下zookeeper，以期望能开发出来更加简单的编程模型。
 
 <!-- more -->
-# 参照文档
-<http://www.tuicool.com/articles/ruMVjyN>
 
-<http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html>
+## 缘起
 
-<http://blog.javachen.com/2013/08/31/my-jekyll-config.html>
+作为一个架构师，首先需要解决问题的能力，其次是解决问题之后不断的提出更好的解决方案的能力，本着不自满的想法，研究下zookeeper：
 
-# 安装步骤
-首先需要说明的是网上的很多安装步骤现在都是不需要的，比如什么`DevKit`之类的，你可以选择直接忽略掉。
+首先，从百度找了点儿文档看，看的非常迷糊，话说研究新东西还是要从官网入手，耐着性子读完这个文章，收获不少。
 
-> 具体的安装和使用步骤如下：
+(http://zookeeper.apache.org/doc/r3.4.6/zookeeperStarted.html)
 
-*  安装ruby(含gem)
-*  安装Jekyll
-*  申请并且初始化Git Page
-*  安装Git Client
-*  配置SSH免登陆提交key
-*  初始化并提交自己的网站
+首先，我认识到，zookeeper的一个很重要的思想是一个虚拟的文件系统，应该是所有的node都共享了一个类似于NAS的文件系统（当然这里是软件机制），我这里理解为每次我把自己的机器连接到某个zookeeper的集群，那么我就在该集群里面跟别人共享了一个相同的硬盘，我可以向该硬盘写入我的文件，然后集群的机制保证我写入的文件的一致性和唯一性，很棒的思路，我的Rainy可以在某种程度上借鉴。
 
+#### 然后第一个【小坑】：
 
-`ps: 以上步骤只要完成前面的4个其实已经可以通过git client来完成发布任务了`
+zookeeper，如果仅仅是为了玩儿一下，你可以快速的启动起来server，不需要做任何的配置，直接zkServer.sh start即可。
 
-## 安装Ruby
-在windows平台安装ruby只要通过ruby installer进行安装即可。
+但是如果要想运行集群的话，首先你要准备不少于3个zookeeper的instance（注意这里是instance，而不是机器，所以可以在一台机器上虚拟，等下我会分享下怎么通过hosts来虚拟）。为什么是3个？我还没有仔细研究，但是应该是有某个机制需要不少于3台的服务器，也许是server/leader/client的这种方案决定的也许是投票机制，这个找时间再去研究，今天先研究应用，所以如果你要玩儿，准备不少于三个的instance即可。
 
-[ruby installer下载](http://rubyinstaller.org/downloads/)
+#### 【试玩】
 
-下载过来之后的安装文件就是一个普通的windows安装程序，直接双击进行安装，安装的过程中注意要勾选加入`path`的选项。
+在开始编码和使用之前，首先建议通过zkCli进入client来体验下zk到底是啥，在zkCli里面，你可以很明确的感觉出来，zk的文件系统的概念，如果大家做过cms，那么对于node概念一定不会陌生，看起来zk的元素但是就是node了。
 
-![安装ruby](http://cn.yizeng.me/assets/images/posts/2013-05-11-ruby-installer.png) 
+#### 【windows系统的第二个坑】
 
-完成安装之后，可以在CMD下运行一下ruby -version来查看是否安装完成。
+官方的教程都是关于linux的，所以使用windows玩儿的时候还是遇到个小坑，在windows系统的时候如果你定义的dataDir的parent folder不存在话，zookeeper会爆exception而不是自动建立文件夹，而且打印出来的exception的提示过于短小以至于开始的时候我忽略了。。。然后直接从源码开始debug，最终发现是这个问题，当然实际上有提示的，这里需要专门说下的就是要么选用mingw或者cygwin来运行zookeeper，要么为zookeeper把所有的文件路径新建好。为了避免接下来更多的坑，我决定投降，使用mingw来启动zookeeper：
 
-## 安装Jekyll
+#### 然后狗血的历程开始了。。。。。。。
 
-安装完ruby，并且勾选了加入path的选项之后，默认已经安装了Gem，接下来我们就通过gem来安装jekyll.
+第一个，“错误: 找不到或无法加载主类 org.apache.zookeeper.server.quorum.QuorumPeerMain”
 
-> 之所以需要通过gem来安装jekyll，是因为jekyll被发布为ruby的一个组件，使用ruby编写的，而gem相当于ruby的安装管理工具，类似于centos的yum或者ubuntu的apt-get。
+怎么会找不到类？
 
-运行下面的命令来安装Jekyll
-{% highlight shell %}
-$gem install jekyll
+仔细定位下明白了，妹的我装的windows的java，mingw调用java也只能调用windows的，然后脚本里面的classpath的分隔符冒号，而windows系统是分号，满满的大坑，切回cmd脚本，老老实实的创建文件夹：
+
+接下来的另一个坑出现了，这个在一定程度上怪我，没有仔细的阅读文档，错误信息提示如下：
+
+{% highlight java %}
+Caused by: java.lang.IllegalArgumentException: serverid null is not a number
+
+        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parseProperties(Q
+
+uorumPeerConfig.java:355)
+
+        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerC
+
+onfig.java:119)
+
+        ... 2 more
 {% endhighlight %}
 
-网上有人说执行到这一步会出现网络异常，我没有遇到，可能是因为开了vpn的原因，如果存在问题的可以考虑用taobao的gem镜像进行安装，使用下面的命令进行gem镜像切换：
-{% highlight shell %}
-$ gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
-$ gem sources -l
-{% endhighlight %}
 
-安装完jekyll之后，在CMD运行一下jekyll -version来确保已经安装完成。
-我安装的版本是`jekyll 3.1.4`
+`Google`之，这个是`myid`这个鬼，`zookeeper`居然需要自己的工作目录下预制ID，感觉一下子收到了成吨的暴击，卧槽，特么你可是一个应用这么广泛的开源软件啊，居然需要两个配置，还要对应起来？太操蛋了。没办法了，自己去新建myid，然后每个id跟配置文件中配置的server列表对应起来：
 
+好吧，现在可以运行起来了，然后你可以发觉启动第一个服务器的时候会每隔一定时间自动轮询另外的机器是否可以连接，启动第二台之后会在第二台上轮询，貌似第一台已经停止轮询了（这个没有仔细观察），第三个启动之后三台打完交互日志就停止了，然后可能会有一些ACK的握手请求过来，不过我们已经可以忽略他们了。
 
-## 申请Github账号
+好吧，最后贴一下配置：
 
-这个步骤其实本来我是省掉的，因为在以前就已经申请并且开通了的，基本步骤就是去[github](https://github.com)注册账号，然后新建repostory并且开通git page服务。
-
-遇到问题的可以参照下面的文档进行：
-[申请Ｇｉｔｈｕｂ并开通Ｐａｇｅ服务](http://www.tuicool.com/articles/ruMVjyN)
-
-
-## 安装Git Client
-
-这个步骤其实对于会使用git的同志来讲基本没有任何压力，对于不会的也很简单，就是下载Git Client并且双击安装
-
-[目前最新的Git Client](https://github-windows.s3.amazonaws.com/GitHubSetup.exe)
-
-双击安装即可，安装完之后右键将会出现`open git gui`和`open git bash`选项，其中`open git bash`将会很常用。
-
-## 初始化自己的博客环境
-
-首先选定自己的工作目录，比如我选定的就是`D:/personal`
-
-然后进入`D:/personal`(这里你改成自己的)，然后右键`open git bash`执行下面的命令：
+我是在一台机器上运行的三台服务器，然而我想用相同的端口，所以用到了hosts文件来虚拟一个dns，hosts文件如下：
 
 {% highlight shell %}
-$ git clone git@github.com:evergreen-tree/evergreen-tree.github.io.git
+127.0.0.2		zk.server1.lo
+127.0.0.3		zk.server2.lo
+127.0.0.4		zk.server3.lo
 {% endhighlight %}
 
-其中`evergreen-tree`替换成你自己在github创建的项目的名字。
+
+接下来依次是三台机器的配置：
+
+{% highlight shell %}
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/tmp/zookeeper1
+dataLogDir=/tmp/zookeeper1log/
+clientPortAddress=zk.server1.lo
+clientPort=2181
+maxClientCnxns=60
+server.1=zk.server1.lo:2182:2183
+server.2=zk.server2.lo:2182:2183
+server.3=zk.server3.lo:2182:2183
+{% endhighlight %}
 
 
-------------
-为Jekyll保留的小尾巴
+{% highlight shell %}
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/tmp/zookeeper2
+dataLogDir=/tmp/zookeeper2log/
+clientPortAddress=zk.server2.lo
+clientPort=2181
+maxClientCnxns=60
+server.1=zk.server1.lo:2182:2183
+server.2=zk.server2.lo:2182:2183
+server.3=zk.server3.lo:2182:2183
+{% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
-[jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+{% highlight shell %}
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/tmp/zookeeper3
+dataLogDir=/tmp/zookeeper3log/
+clientPortAddress=zk.server3.lo
+clientPort=2181
+maxClientCnxns=60
+server.1=zk.server1.lo:2182:2183
+server.2=zk.server2.lo:2182:2183
+server.3=zk.server3.lo:2182:2183
+{% endhighlight %}
+
+然后是到你的zookeeper放置的盘符的根目录下新建`/tmp/zookeeper{num}`跟`/tmp/zookeeper{num}log`
+
+然后分别在`/tmp/zookeeper{num}/`下面新建`myid`文件，并且在文件里面写入相应的`num`。
