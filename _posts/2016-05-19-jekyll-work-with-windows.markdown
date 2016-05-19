@@ -8,7 +8,8 @@ categories: jekyll
 > 非常感谢Jekyll的作者和github给我们提供了如此便利的工具，用来生成自己的博客，甚至于接近动态的效果。
 > 好东西必须拿来分享，所以制作这个文章来介绍这个东东。
 
-<!-- more -->
+<!--more-->
+
 # 参照文档
 <http://www.tuicool.com/articles/ruMVjyN>
 
