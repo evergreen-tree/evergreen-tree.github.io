@@ -15,12 +15,19 @@ categories: jekyll
 # 安装步骤
 
 > 具体的安装和使用步骤如下：
+
 >> 1. 安装ruby
+
 >> 2. 安装Jekyll
+
 >> 3. 申请并且初始化Git Page
+
 >> 4. 安装Git Client
+
 >> 5. 配置SSH免登陆提交key
+
 >> 6. 初始化并提交自己的网站
+
 
 `ps: 以上步骤只要完成前面的4个其实已经可以通过git client来完成发布任务了`
 
