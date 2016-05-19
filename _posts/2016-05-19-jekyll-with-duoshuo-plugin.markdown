@@ -63,7 +63,7 @@ var duoshuoQuery = {short_name:"evergreen"};
 ## 提交代码
 
 依次执行下面的命令进行编译提交：
-{% highlight html %}
+{% highlight shell %}
 jekyll build			#build
 git add --all			   #添加到暂存区	
 git commit -m "commit for change" #提交到本地仓库
