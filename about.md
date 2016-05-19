@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+[<<回首页]({{site.url}})
+
 # 简介
 
 一只`Java`架构师，致力于提升祖国花朵的开发技能.
