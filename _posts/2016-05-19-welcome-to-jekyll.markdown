@@ -27,7 +27,7 @@ categories: jekyll
 
 `ps: 以上步骤只要完成前面的4个其实已经可以通过git client来完成发布任务了`
 
-### 安装Ruby
+## 安装Ruby
 在windows平台安装ruby只要通过ruby installer进行安装即可。
 
 [ruby installer下载](http://rubyinstaller.org/downloads/)
@@ -38,7 +38,7 @@ categories: jekyll
 
 完成安装之后，可以在CMD下运行一下ruby -version来查看是否安装完成。
 
-### 安装Jekyll
+## 安装Jekyll
 
 安装完ruby，并且勾选了加入path的选项之后，默认已经安装了Gem，接下来我们就通过gem来安装jekyll.
 
@@ -59,7 +59,7 @@ $ gem sources -l
 我安装的版本是`jekyll 3.1.4`
 
 
-### 申请Github账号
+## 申请Github账号
 
 这个步骤其实本来我是省掉的，因为在以前就已经申请并且开通了的，基本步骤就是去[github](https://github.com)注册账号，然后新建repostory并且开通git page服务。
 
@@ -67,19 +67,29 @@ $ gem sources -l
 [申请Ｇｉｔｈｕｂ并开通Ｐａｇｅ服务](http://www.tuicool.com/articles/ruMVjyN)
 
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+## 安装Git Client
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+这个步骤其实对于会使用git的同志来讲基本没有任何压力，对于不会的也很简单，就是下载Git Client并且双击安装
 
-Jekyll also offers powerful support for code snippets:
+[目前最新的Git Client](https://github-windows.s3.amazonaws.com/GitHubSetup.exe)
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+双击安装即可，安装完之后右键将会出现`open git gui`和`open git bash`选项，其中`open git bash`将会很常用。
+
+## 初始化自己的博客环境
+
+首先选定自己的工作目录，比如我选定的就是`D:/personal`
+
+然后进入`D:/personal`(这里你改成自己的)，然后右键`open git bash`执行下面的命令：
+
+{% highlight shell %}
+$ git clone git@github.com:evergreen-tree/evergreen-tree.github.io.git
 {% endhighlight %}
+
+其中`evergreen-tree`替换成你自己在github创建的项目的名字。
+
+
+------------
+为Jekyll保留的小尾巴
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
