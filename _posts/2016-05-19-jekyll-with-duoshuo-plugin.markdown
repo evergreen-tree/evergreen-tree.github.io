@@ -65,10 +65,10 @@ var duoshuoQuery = {short_name:"evergreen"};
 依次执行下面的命令进行编译提交：
 
 {% highlight shell %}
-jekyll build			#build
-git add --all			   #添加到暂存区	
-git commit -m "commit for change" #提交到本地仓库
-git push origin master    	   #线上的站点是部署在master下面的
+jekyll build			
+git add --all			   
+git commit -m "commit for change" 
+git push origin master    	  
 {% endhightlight %}
 
 
