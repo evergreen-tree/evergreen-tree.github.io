@@ -64,12 +64,6 @@ var duoshuoQuery = {short_name:"evergreen"};
 
 依次执行下面的命令进行编译提交：
 
-{% highlight shell %}
-jekyll build			
-git add --all			   
-git commit -m "commit for change" 
-git push origin master    	  
-{% endhightlight %}
 
 
 
