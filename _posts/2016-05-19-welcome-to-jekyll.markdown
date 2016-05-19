@@ -46,7 +46,13 @@ categories: jekyll
 
 运行下面的命令来安装Jekyll
 {% highlight shell %}
-gem install jekyll
+$gem install jekyll
+{% endhighlight %}
+
+网上有人说执行到这一步会出现网络异常，我没有遇到，可能是因为开了vpn的原因，如果存在问题的可以考虑用taobao的gem镜像进行安装，使用下面的命令进行gem镜像切换：
+{% highlight shell %}
+$ gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
+$ gem sources -l
 {% endhighlight %}
 
 
