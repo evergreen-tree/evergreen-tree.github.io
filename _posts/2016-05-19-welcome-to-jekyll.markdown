@@ -55,7 +55,16 @@ $ gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
 $ gem sources -l
 {% endhighlight %}
 
+安装完jekyll之后，在CMD运行一下jekyll -version来确保已经安装完成。
+我安装的版本是`jekyll 3.1.4`
 
+
+### 申请Github账号
+
+这个步骤其实本来我是省掉的，因为在以前就已经申请并且开通了的，基本步骤就是去[github](https://github.com)注册账号，然后新建repostory并且开通git page服务。
+
+遇到问题的可以参照下面的文档进行：
+[申请Ｇｉｔｈｕｂ并开通Ｐａｇｅ服务](http://www.tuicool.com/articles/ruMVjyN)
 
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
