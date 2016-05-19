@@ -65,8 +65,7 @@ $ gem sources -l
 这一步遇到了一个问题：
 `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://rubygems-china.oss-cn-hangzhou.aliyuncs.com/specs.4.8.gz)`
 后来google到下面的解决方案：
-
-(https://github.com/ruby-china/rubygems-mirror/wiki)
+<https://github.com/ruby-china/rubygems-mirror/wiki>
 
 
 
