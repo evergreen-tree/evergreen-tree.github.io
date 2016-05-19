@@ -17,7 +17,7 @@ categories: jekyll
 
 > 具体的安装和使用步骤如下：
 
-*  安装ruby
+*  安装ruby(含gem)
 *  安装Jekyll
 *  申请并且初始化Git Page
 *  安装Git Client
@@ -36,7 +36,21 @@ categories: jekyll
 
 ![安装ruby](http://cn.yizeng.me/assets/images/posts/2013-05-11-ruby-installer.png) 
 
+完成安装之后，可以在CMD下运行一下ruby -version来查看是否安装完成。
+
 ### 安装Jekyll
+
+安装完ruby，并且勾选了加入path的选项之后，默认已经安装了Gem，接下来我们就通过gem来安装jekyll.
+
+> 之所以需要通过gem来安装jekyll，是因为jekyll被发布为ruby的一个组件，使用ruby编写的，而gem相当于ruby的安装管理工具，类似于centos的yum或者ubuntu的apt-get。
+
+运行下面的命令来安装Jekyll
+{% highlight shell %}
+gem install jekyll
+{% endhighlight %}
+
+
+
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
