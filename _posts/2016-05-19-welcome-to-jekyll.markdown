@@ -13,19 +13,28 @@ categories: jekyll
 <http://blog.javachen.com/2013/08/31/my-jekyll-config.html>
 
 # 安装步骤
+首先需要说明的是网上的很多安装步骤现在都是不需要的，比如什么`DevKit`之类的，你可以选择直接忽略掉。
 
 > 具体的安装和使用步骤如下：
->+ 1. 安装ruby
->+ 2. 安装Jekyll
-* 3. 申请并且初始化Git Page
-* 4. 安装Git Client
-* 5. 配置SSH免登陆提交key
-* 6. 初始化并提交自己的网站
+
+*  安装ruby
+*  安装Jekyll
+*  申请并且初始化Git Page
+*  安装Git Client
+*  配置SSH免登陆提交key
+*  初始化并提交自己的网站
 
 
 `ps: 以上步骤只要完成前面的4个其实已经可以通过git client来完成发布任务了`
 
 ### 安装Ruby
+在windows平台安装ruby只要通过ruby installer进行安装即可。
+
+[ruby installer下载](http://rubyinstaller.org/downloads/)
+
+下载过来之后的安装文件就是一个普通的windows安装程序，直接双击进行安装，安装的过程中注意要勾选加入`path`的选项。
+
+![安装ruby](http://cn.yizeng.me/assets/images/posts/2013-05-11-ruby-installer.png) 
 
 ### 安装Jekyll
 
