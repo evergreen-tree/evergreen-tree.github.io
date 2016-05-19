@@ -52,7 +52,7 @@ layout: default
 	<section>
 	<h4>Recent Posts</h4>
 	<ul id="recent_posts">
-	{% for rpost in site.posts limit: 5 %}
+	{% for rpost in site.posts limit: 3 %}
 	<li class="post">
 		<a href="{{ rpost.url }}">{{ rpost.title }}</a> 
 	</li>
