@@ -51,10 +51,10 @@ layout: default
     {% endif %}
 	<section>
 	<h4>Recent Posts</h4>
-	<ul id="recent_posts">{ % for rpost in site.posts limit: 15 %}
+	<ul id="recent_posts">{% for rpost in site.posts limit: 15 %}
 	<li class="post">
 	<a href=""></a>
-	</li>{ % endfor %}
+	</li>{% endfor %}
 	</ul>
 	</section>
 </div><!-- end #home -->
