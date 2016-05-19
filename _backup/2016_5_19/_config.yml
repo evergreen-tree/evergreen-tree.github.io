@@ -1,0 +1,19 @@
+title: Stack Problems
+description: My Personal Stack Problems
+author: Grom(巴林的狗尾草)
+github: http://git.oschina.net/grom
+about: The architect of JAVA, currently doing more in backend.
+urls:
+    - text: About Me
+      url: /about/
+    - text: Github_cn
+      url: http://git.oschina.net/grom
+    - text: XML Feed
+      url: /feed.xml
+url: "https://evergreen-tree.github.io"
+baseurl: ""
+gems: [jekyll-paginate]
+paginate: 20
+per_page: 20
+paginate_path: "/page:num/"
+markdown: kramdown
