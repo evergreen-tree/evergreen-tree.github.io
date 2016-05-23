@@ -87,9 +87,17 @@ $ gem sources -l
 
 这个步骤其实对于会使用git的同志来讲基本没有任何压力，对于不会的也很简单，就是下载Git Client并且双击安装
 
-[目前最新的Git Client](https://github-windows.s3.amazonaws.com/GitHubSetup.exe)
+[目前最新的Git Client GUI](https://github-windows.s3.amazonaws.com/GitHubSetup.exe)
 
-双击安装即可，安装完之后右键将会出现`open git gui`和`open git bash`选项，其中`open git bash`将会很常用。
+[目前最新的Git Command客户端](https://git-scm.com/download/win)
+
+> `Git Client GUI` 安装完成之后，将会出现一个图形化界面，配置完git之后可以通过点击一些按钮进行操作，具体的操作请google。
+
+> `Git Command` 安装完之后右键将会出现`open git gui`和`open git bash`选项，其中`open git bash`将会很常用。
+
+![Git GUI跟Command的区别](/static/img/git.jpg)
+
+
 
 ## 初始化自己的博客环境
 
