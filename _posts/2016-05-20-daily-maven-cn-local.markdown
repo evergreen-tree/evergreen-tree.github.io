@@ -2,7 +2,7 @@
 layout: post
 title:  "[技术每日说] -  吐槽下墙内的maven的故事!"
 date:   2016-05-20 10:30:01 +0800
-categories: Daily
+categories: daily
 ---
 
 > 今天帮一个不怎么会技术的同事搭建一个本地环境，因为公司内部有个nexus是从08年搭建过来的，所以各种类包都比较齐全，但是很多apache的公开库，由于这几年的发展都纷纷改头换面，改变了自己的groupId，结果导致直接连接外部的repostry的各种意外。

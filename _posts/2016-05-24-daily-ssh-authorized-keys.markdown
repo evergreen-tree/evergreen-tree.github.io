@@ -2,7 +2,7 @@
 layout: post
 title:  "[技术每日说] -  SSH登陆的原理分析和免登陆设置!"
 date:   2016-05-24 15:57:01 +0800
-categories: Daily linux
+categories: daily linux
 ---
 
 > SSH 为 Secure Shell 的缩写，由 IETF 的网络工作小组（Network Working Group）所制定；SSH 为建立在应用层和传输层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用SSH 协议可以有效防止远程管理过程中的信息泄露问题。
