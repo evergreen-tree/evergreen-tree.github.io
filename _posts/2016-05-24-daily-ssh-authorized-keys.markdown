@@ -35,6 +35,7 @@ SSH 为 Secure Shell 的缩写，由 IETF 的网络工作小组（Network Workin
 ```shell
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 ```
+`-P '' 说明不需要密码，-f指定文件的存储位置，可以都不填写，然后采用默认即可`
 
 将公钥拷贝到服务器的`~/.ssh/authorized_keys`文件中就可以了。拷贝方法有如下几种：
 
