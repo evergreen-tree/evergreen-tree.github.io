@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
 categories: daily
-title: Daily
+title: daily
 permalink: /category/daily
 ---
