@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "[技术每日说] - CORS与Cross-Domain(跨域)问题的分析和解决方案!"
-date:   2016-05-25 10:57:01 +0800
+date:   2016-06-01 10:57:01 +0800
 categories: daily java cors
 ---
 
