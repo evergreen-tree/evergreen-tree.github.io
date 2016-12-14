@@ -18,6 +18,22 @@ categories: jekyll
 
 想要安装多说插件到Jekyll，首先要大体上对自己所使用的theme的结构有所了解。
 
+
+
+<script type="text/javascript">
+    google_ad_client = "ca-pub-6887606225723590";
+    google_ad_slot = "8985973861";
+    google_ad_width = 300;
+    google_ad_height = 250;
+</script>
+<!-- EFS fixed -->
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+
 > 具体的安装和使用步骤如下：
 
 *  注册[多说]账号
